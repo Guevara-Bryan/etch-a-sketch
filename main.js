@@ -87,6 +87,7 @@ let grid = document.querySelector(".container > #grid");
 let size_slider = document.querySelector("#ui > #grid-slider");
 let clear_button = document.querySelector("#ui > #clear-grid");
 let random_color_button = document.querySelector("#ui > #random-color");
+let gradient_color_button = document.querySelector("#ui > #gradient-color");
 let resolution = document.querySelector("label[for=grid-slider]");
 //-----------------------------------------------------------------
 
@@ -104,6 +105,15 @@ function random_color(cell){
     cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 }
 
+function gradient_color(cell){
+    let hex = current_board.color.value;
+    let color = cell.style.backgroundColor === "rgb(255, 255, 255)" ? `rgb(${parseInt(hex.slice(1,3), 16)}, ${parseInt(hex.slice(3, 5), 16)}, ${parseInt(hex.slice(5), 16)})`: cell.style.backgroundColor;
+    let r = parseInt(color.split(",")[0].slice(4));
+    let g = parseInt(color.split(",")[1]);
+    let b = parseInt(color.split(",")[2].slice(0,-1));
+
+    cell.style.backgroundColor = `rgb(${r - 25}, ${g - 25}, ${b - 25})`;
+}
 //---------------------------------------------------------------
 
 
@@ -121,6 +131,16 @@ random_color_button.addEventListener("click", ()=> {
     } else {
         current_board.setShader(current_board.default_shader);
         random_color_button.value = "Activate";
+    }
+});
+
+gradient_color_button.addEventListener("click", ()=> {
+    if(gradient_color_button.value === "Activate"){
+        current_board.setShader(gradient_color);
+        gradient_color_button.value = "Stop";
+    } else {
+        current_board.setShader(current_board.default_shader);
+        gradient_color_button.value = "Activate";
     }
 });
 
