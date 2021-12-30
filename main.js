@@ -3,11 +3,12 @@ class SquareBoard {
     dimention = 0;
     cell_width = 0;
     cell_height = 0;
-    color = "rgb(255, 255, 255)";
+    brush_color = "";
     html_board;
-    constructor(dim, html_e){
+    constructor(dim, html_e, color){
         this.html_board = html_e;
         this.dimention = dim;
+        this.brush_color = color;
         this.cell_width = this.html_board.clientWidth / this.dimention;
         this.cell_height = this.html_board.clientHeight / this.dimention;
 
@@ -21,7 +22,7 @@ class SquareBoard {
 
                 // add event listener to change background color
                 div_cell.addEventListener("mouseenter", () => {
-                    div_cell.style.backgroundColor = this.color;
+                    div_cell.style.backgroundColor = this.brush_color;
                 });
 
                 // set cell width and height;
@@ -53,7 +54,7 @@ class SquareBoard {
 
                 // add event listener to change background color
                 div_cell.addEventListener("mouseenter", () => {
-                    div_cell.style.backgroundColor = this.color;
+                    div_cell.style.backgroundColor = this.brush_color;
                 });
 
                 // set cell width and height;
@@ -73,17 +74,19 @@ class SquareBoard {
 //----------------- HTML elements --------------------------------
 let grid = document.querySelector(".container > #grid");
 let size_slider = document.querySelector("#ui > #grid-slider");
+let color = document.querySelector("#ui > #color-picker");
 //-----------------------------------------------------------------
 
 // Init the board;
-let current_board = new SquareBoard(size_slider.value, grid);
-
-size_slider.addEventListener("input", ()=>{
-    current_board.resize(size_slider.value, grid);
-});
+let current_board = new SquareBoard(size_slider.value, grid, color.value);
 
 
-// Resizes the grid when the screen changes size;
-window.addEventListener("resize", ()=>{
-    current_board.resize(current_board.dimention, grid);
-});
+//--------------- Event Listeners -------------------------------
+size_slider.addEventListener("input", ()=>{ current_board.resize(size_slider.value, grid); });
+
+color.addEventListener("change", ()=>{ current_board.brush_color = color.value; });
+
+
+// Adjusts the grid when the screen changes size;
+window.addEventListener("resize", ()=>{ current_board.resize(current_board.dimention, grid); });
+//--------------------------------------------------------------
