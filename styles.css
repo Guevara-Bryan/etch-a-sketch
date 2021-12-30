@@ -19,16 +19,14 @@
 }
 
 #grid{
-    background-color: orange;
     display: flex;
     flex-wrap: wrap;
     padding: 0px;
     height: 100%;
     width: 70%;
+    border: 3px solid black;
 }
 
 .cell{
-    background-color: #00fc3f;
-    border: 1px solid black;
-    height: auto;
+    background-color: #ffffff;
 }

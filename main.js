@@ -69,12 +69,19 @@ class SquareBoard {
             this.grid.push(cells);
         }
     }
+
+    paint(color){
+        this.grid.forEach(row => {
+            row.forEach(cell => { cell.style.backgroundColor = color; });
+        });
+    }
 };
 
 //----------------- HTML elements --------------------------------
 let grid = document.querySelector(".container > #grid");
 let size_slider = document.querySelector("#ui > #grid-slider");
 let color = document.querySelector("#ui > #color-picker");
+let clear_button = document.querySelector("#ui > #clear-grid");
 //-----------------------------------------------------------------
 
 // Init the board;
@@ -85,6 +92,8 @@ let current_board = new SquareBoard(size_slider.value, grid, color.value);
 size_slider.addEventListener("input", ()=>{ current_board.resize(size_slider.value, grid); });
 
 color.addEventListener("change", ()=>{ current_board.brush_color = color.value; });
+
+clear_button.addEventListener("click", ()=> current_board.paint("white"));
 
 
 // Adjusts the grid when the screen changes size;
