@@ -70,11 +70,17 @@ class SquareBoard {
     }
 };
 
+//----------------- HTML elements --------------------------------
 let grid = document.querySelector(".container > #grid");
+let size_slider = document.querySelector("#ui > #grid-slider");
+//-----------------------------------------------------------------
 
-// Initial board to be displayed
-let current_board = new SquareBoard(16, grid);
+// Init the board;
+let current_board = new SquareBoard(size_slider.value, grid);
 
+size_slider.addEventListener("input", ()=>{
+    current_board.resize(size_slider.value, grid);
+});
 
 
 // Resizes the grid when the screen changes size;
