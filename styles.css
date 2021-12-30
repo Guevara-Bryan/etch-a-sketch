@@ -1,21 +1,105 @@
+:root{
+    --primary-color: #543c52;
+    --secondary-color: #361d32;
+    --title-color: #f55951;
+    --text-color: #edd2cb;
+    --pale-color: #f1e8e6;
+}
+
 *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family:"Shizuru", Arial;
+}
+
+.main{
+    background-color: var(--primary-color, "white");
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.main > h1{
+    color: var(--title-color, black);
+    font-size: 4rem;
+    margin-bottom: auto;
 }
 
 .container{
-    background-color: rgb(0, 173, 253);
-    height: 90vh;
-    width: 90vw;
+    background-color: var(--secondary-color, white);
+    height: 80vh;
+    width: 80vw;
     display: flex;
-    padding: 10px;
+    margin-bottom: 3%;
+    padding: 20px;
+    border-radius: 15px;
 }
 
 #ui{
-    background-color: aqua;
+    background-color: var(--secondary-color, white);
     height: 100%;
     width: 30%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ui-item{
+    margin-bottom: 100px;
+}
+
+#ui > label{
+    color: var(--text-color, "black");
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--text-color, white);
+}
+
+#grid-slider{
+    -webkit-appearance: none;
+    width: 16vw;
+    height: 2vh;
+    background-color: var(--pale-color, white);
+    outline: none;
+    opacity: 0.7;
+    border-radius: 10px;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+#grid-slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    background-color: var(--title-color, black);
+    height: 2vh;
+    width: 2vh;
+    border-radius: 50%;
+}
+
+#grid-slider:hover{
+    background-color: var(--text-color, white);
+}
+
+#clear-grid{
+    color: var(--text-color, "black");
+    background-color: var(--primary-color, "white");
+    width: 6vw;
+    height: 4.5vh;
+    border-radius: 5px;
+    border: none;
+}
+
+#clear-grid:hover{
+    box-shadow: 0px 0px 5px 5px rgba(241, 232, 230, 0.50);
+    transform: scale(1.1);
+}
+
+#clear-grid:active{
+    transform: scale(1);
 }
 
 #grid{
@@ -24,7 +108,6 @@
     padding: 0px;
     height: 100%;
     width: 70%;
-    border: 3px solid black;
 }
 
 .cell{

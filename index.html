@@ -4,18 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Shizuru">
     <link rel="stylesheet" href="styles.css">
     <script src="main.js" defer></script>
     <title>Etch-A-Sketch</title>
 </head>
 <body>
-    <div class="container">
-        <div id="ui">
-            <input id="grid-slider" type="range" min="16" max="64" value="16" step="16">
-            <input id="color-picker" type="color" value="#000000">
-            <button id="clear-grid">Clear</button>
-        </div>
-        <div id="grid"></div>
-    </div>
+    <div class="main">
+        <h1>Etch-A-Sketch</h1>
+        <div class="container">
+            <div id="ui">
+                <label for="grid-slider">Resolution:</label>
+                <input id="grid-slider" class="ui-item" type="range" min="16" max="64" value="16" step="16">
+
+                <label for="color-picker">Color:</label>
+                <input id="color-picker" class="ui-item" type="color" value="#000000">
+
+                <label for="clear-grid">Clear:</label>
+                <input type="button" id="clear-grid" value="Clear">
+            </div>
+            <div id="grid"></div>
+        </div><!--container-->
+    </div> <!--main-->
 </body>
 </html>
